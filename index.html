@@ -77,7 +77,24 @@ h2{font-size:18px;line-height:1.15;margin:0 0 4px;font-weight:800}
 .stage .ext{grid-column:1/5;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;grid-auto-rows:minmax(86px,auto)}
 .stage .ext .tile{min-height:86px;padding:10px 8px}
 @media (max-width:760px){.stage{grid-template-columns:minmax(0,1fr)}.stage .full,.stage .vcol,.stage .rcol,.stage .ext{grid-column:1/-1}.stage .ext{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-height:780px){.cover{height:clamp(52px,8.5vh,72px)}.page{gap:14px}.stage{margin-top:0}.stage .full{margin-top:8px}.hero{padding-block:10px}}
+.stage .rcol.panel{background:rgba(203,181,147,.16);border:1.5px solid rgba(203,181,147,.45);border-radius:18px;padding:18px;justify-content:center;gap:18px}
+.page.std .stage .rcol.panel > div:first-child{padding-right:calc(var(--art) - 24px)}
+.stage .rcol.panel .lab{padding-top:0}
+.stage .ptitle{margin:2px 0 2px;font-size:18px;font-weight:800;line-height:1.15}
+.stage .psub{margin:0;font-size:13.5px;line-height:1.4;color:var(--muted)}
+.stage .rcol.panel .inner{gap:16px}
+.stage .rcol.panel .tile{background:#fff;border-color:rgba(203,181,147,.55)}
+.tile.acc .circ{background:var(--acc)}
+.tile.acc{border-color:color-mix(in srgb,var(--acc) 35%,var(--line));background:color-mix(in srgb,var(--acc) 7%,#fff)}
+.tile.acc::before{content:"";position:absolute;left:16px;right:16px;top:-1px;height:3px;border-radius:0 0 3px 3px;background:var(--acc);opacity:.85}
+.tile.acc .ext{background:var(--acc)}
+.page.std{--art:clamp(120px,23vh,190px)}
+.page.std .hero{position:relative;padding-right:calc(var(--art) + 52px)}
+.page.std .cover{position:absolute;right:26px;top:-6px;height:var(--art);width:var(--art);z-index:3;border-width:5px;box-shadow:0 8px 22px rgba(80,60,30,.22)}
+.stage .rcol.many .inner{gap:12px}.stage .rcol.panel.many{gap:12px;padding-block:14px}
+@media (max-height:820px){.stage .rcol.many .psub{display:none}}
+@media (max-height:660px){.stage .rcol.many .ptitle{display:none}}
+@media (max-height:780px){.page:not(.std) .cover{height:clamp(52px,8.5vh,72px)}.page{gap:14px}.stage{margin-top:0}.stage .full{margin-top:8px}.hero{padding-block:10px}}
 @media (max-height:720px){.hero .body{display:none}}
 @media (max-height:640px){.stage .vtext p{display:none}}
 @media (max-height:600px){.hero .body,.tile .sub{display:none}}
@@ -189,13 +206,14 @@ h2{font-size:18px;line-height:1.15;margin:0 0 4px;font-weight:800}
       l.sub && el('span', { class: 'sub', text: l.sub }),
       ext && el('span', { class: 'ext ic', style: '--m:url(assets/icons/external-link.svg)', 'aria-hidden': 'true' }));
     if (!url) a.addEventListener('click', e => e.preventDefault());
+    if (/^#[0-9a-f]{3,8}$/i.test(l.accent || '')) { a.classList.add('acc'); a.style.setProperty('--acc', l.accent); }
     return a;
   }
 
   function stage(c) {
     const v = c.video;
     const list = c.links || [];
-    const inner = list.filter(l => l.open !== 'external').slice(0, 4);
+    const inner = list.filter(l => l.open !== 'external').slice(0, 6);
     const outer = list.filter(l => l.open === 'external').slice(0, 4);
     const src = safeUrl(v.embedUrl);
     const btn = src
@@ -205,7 +223,7 @@ h2{font-size:18px;line-height:1.15;margin:0 0 4px;font-weight:800}
           v.poster && el('img', { src: v.poster, alt: '' }), el('span', { class: 'play' }));
     const innerTiles = inner.map((l, i) => {
       const t = tileFor(l);
-      if (inner.length === 3 && i === 2) t.classList.add('wide');
+      if (inner.length % 2 === 1 && i === inner.length - 1) t.classList.add('wide');
       if (inner.length === 1) { t.classList.add('wide'); t.style.gridRow = '1 / 3'; }
       return t;
     });
@@ -215,8 +233,11 @@ h2{font-size:18px;line-height:1.15;margin:0 0 4px;font-weight:800}
           el('h2', { text: v.heading || v.title || 'How to Use Your Portal' }),
           v.text && el('p', { text: v.text })),
         btn),
-      inner.length && el('div', { class: 'rcol' },
-        el('p', { class: 'eyebrow lab', text: c.portalLinksTitle || 'Internal Quick Links' }),
+      inner.length && el('div', { class: 'rcol' + (c.panel ? ' panel' : '') + (inner.length > 4 ? ' many' : '') },
+        el('div', {},
+          el('p', { class: 'eyebrow lab', text: c.portalLinksTitle || 'Internal Quick Links' }),
+          c.panel && c.panel.title && el('p', { class: 'ptitle', text: c.panel.title }),
+          c.panel && c.panel.text && el('p', { class: 'psub', text: c.panel.text })),
         el('nav', { class: 'inner', 'aria-label': 'Internal quick links' }, ...innerTiles)),
     ];
     if (outer.length) kids.push(
@@ -228,6 +249,7 @@ h2{font-size:18px;line-height:1.15;margin:0 0 4px;font-weight:800}
 
   function render(c) {
     document.title = `${c.firstName || 'Your'} — Podcast Portal`;
+    app.classList.toggle('std', !!c.video);
     if (c.video) { app.replaceChildren(hero(c), stage(c)); return; }
     const left = [];
     if (c.video) left.push(videoCard(c.video));
