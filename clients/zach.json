@@ -20,7 +20,8 @@
       "sub": "Share how things are going",
       "icon": "activity",
       "open": "portal",
-      "url": "https://thepodcastupload.myassembly.com/apps/2aaa0fea-5845-4161-b85d-f20df7b76d48"
+      "url": "https://thepodcastupload.myassembly.com/apps/2aaa0fea-5845-4161-b85d-f20df7b76d48",
+      "newTab": true
     },
     {
       "label": "Show Analytics",
