@@ -8,39 +8,32 @@
     "body": "Our goal is for you to continue to manage episodes, review content, and keep everything on track like before, but now you have access to it all in one place!"
   },
   "video": {
-    "title": "How to Use Your Portal:",
+    "title": "How to use your portal",
     "text": "This short video shows you exactly how to navigate your portal—how to review, where to give feedback, and how each episode moves forward, all in one place.",
     "poster": "assets/workflow-poster.jpg",
     "embedUrl": ""
   },
   "links": [
     {
-      "label": "Your Pulse",
-      "sub": "Share how things are going",
-      "icon": "activity",
-      "open": "portal",
-      "url": ""
-    },
-    {
-      "label": "Files",
-      "sub": "Episodes & assets",
-      "icon": "folder",
-      "open": "portal",
-      "url": ""
-    },
-    {
-      "label": "Analytics reports",
-      "sub": "Your monthly numbers",
+      "label": "Show Analytics",
+      "sub": "Your show's numbers",
       "icon": "report-analytics",
       "open": "portal",
-      "url": ""
+      "url": "https://thepodcastupload.myassembly.com/apps/d5a91271-b04a-447b-8302-ac6cb2d9d70d"
     },
     {
-      "label": "Messages",
+      "label": "Meeting Notes",
+      "sub": "Strategy chat recaps",
+      "icon": "notes",
+      "open": "portal",
+      "url": "https://thepodcastupload.myassembly.com/apps/82c9badc-b27d-4cb0-8c7f-a708d0f75661"
+    },
+    {
+      "label": "Message Us",
       "sub": "Talk to the TPU team",
       "icon": "message-circle",
       "open": "portal",
-      "url": ""
+      "url": "https://thepodcastupload.myassembly.com/messaging"
     },
     {
       "label": "Riverside",
@@ -71,19 +64,6 @@
       "url": "https://studio.youtube.com"
     }
   ],
-  "upcoming": [
-    {
-      "date": "Dec 3",
-      "label": "Next recording session"
-    },
-    {
-      "date": "Dec 10",
-      "label": "Episode 42 publishes"
-    },
-    {
-      "date": "Dec 15",
-      "label": "Monthly strategy chat"
-    }
-  ],
+  "upcoming": [],
   "team": []
 }
