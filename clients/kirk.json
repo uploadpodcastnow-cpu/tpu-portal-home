@@ -1,7 +1,7 @@
 {
   "firstName": "Kirk",
   "showName": "The Kirk Cameron Show",
-  "coverArt": "",
+  "coverArt": "https://pbcdn1.podbean.com/imglogo/image-logo/21805283/32212341d949dffc8409335ac74fb55d.png",
   "welcome": {
     "title": "Welcome to your portal, Kirk!",
     "lead": "Everything for the show, in one place.",
@@ -39,18 +39,5 @@
     }
   ],
   "upcoming": [],
-  "team": [
-    {
-      "name": "Caleb",
-      "role": "Sponsors & scripts"
-    },
-    {
-      "name": "Kaylee",
-      "role": "Show social content"
-    },
-    {
-      "name": "Olivia",
-      "role": "Newsletter & Kirk's socials"
-    }
-  ]
+  "team": []
 }
