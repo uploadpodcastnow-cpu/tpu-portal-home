@@ -9,11 +9,19 @@
   },
   "video": {
     "title": "How to use your portal",
-    "text": "This short video shows you exactly how to navigate your portal—how to review, where to give feedback, and how each episode moves forward, all in one place.",
+    "text": "This short video shows you exactly how to navigate your portal—how to review, where to give feedback, and how each episode moves forward, all in one place. Use the links to the right to jump into the areas you use most often.",
     "poster": "assets/workflow-poster.jpg",
-    "embedUrl": "https://www.tella.tv/video/navigating-your-new-client-portal-ezt1/embed?title=0&b=0&wt=0"
+    "embedUrl": "https://www.tella.tv/video/navigating-your-new-client-portal-ezt1/embed?title=0&b=0&wt=0",
+    "heading": "How to Use Your Portal"
   },
   "links": [
+    {
+      "label": "Your Pulse",
+      "sub": "Share how things are going",
+      "icon": "activity",
+      "open": "portal",
+      "url": "https://thepodcastupload.myassembly.com/apps/2aaa0fea-5845-4161-b85d-f20df7b76d48"
+    },
     {
       "label": "Show Analytics",
       "sub": "Your show's numbers",
