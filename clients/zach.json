@@ -1,0 +1,89 @@
+{
+  "firstName": "Zach",
+  "showName": "The Surthrivalist Podcast",
+  "coverArt": "assets/zach-cover.jpg",
+  "welcome": {
+    "title": "Welcome to your portal, Zach!",
+    "lead": "We developed this portal to put all your podcast resources in one place.",
+    "body": "Our goal is for you to continue to manage episodes, review content, and keep everything on track like before, but now you have access to it all in one place!"
+  },
+  "video": {
+    "title": "How to Use Your Portal:",
+    "text": "This short video shows you exactly how to navigate your portal—how to review, where to give feedback, and how each episode moves forward, all in one place.",
+    "poster": "assets/workflow-poster.jpg",
+    "embedUrl": ""
+  },
+  "links": [
+    {
+      "label": "Your Pulse",
+      "sub": "Share how things are going",
+      "icon": "activity",
+      "open": "portal",
+      "url": ""
+    },
+    {
+      "label": "Files",
+      "sub": "Episodes & assets",
+      "icon": "folder",
+      "open": "portal",
+      "url": ""
+    },
+    {
+      "label": "Analytics reports",
+      "sub": "Your monthly numbers",
+      "icon": "report-analytics",
+      "open": "portal",
+      "url": ""
+    },
+    {
+      "label": "Messages",
+      "sub": "Talk to the TPU team",
+      "icon": "message-circle",
+      "open": "portal",
+      "url": ""
+    },
+    {
+      "label": "Riverside",
+      "sub": "Record episodes",
+      "icon": "microphone",
+      "open": "external",
+      "url": "https://riverside.fm/dashboard"
+    },
+    {
+      "label": "Frame.io",
+      "sub": "Review & give feedback",
+      "icon": "message-check",
+      "open": "external",
+      "url": "https://app.frame.io"
+    },
+    {
+      "label": "Podbean",
+      "sub": "Audio publishing",
+      "icon": "headphones",
+      "open": "external",
+      "url": "https://www.podbean.com/login"
+    },
+    {
+      "label": "YouTube Studio",
+      "sub": "Video publishing",
+      "icon": "player-play",
+      "open": "external",
+      "url": "https://studio.youtube.com"
+    }
+  ],
+  "upcoming": [
+    {
+      "date": "Dec 3",
+      "label": "Next recording session"
+    },
+    {
+      "date": "Dec 10",
+      "label": "Episode 42 publishes"
+    },
+    {
+      "date": "Dec 15",
+      "label": "Monthly strategy chat"
+    }
+  ],
+  "team": []
+}

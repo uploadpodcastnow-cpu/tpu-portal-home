@@ -1,0 +1,65 @@
+{
+  "firstName": "Kirk",
+  "showName": "The Kirk Cameron Show",
+  "coverArt": "",
+  "welcome": {
+    "title": "Welcome to your portal, Kirk!",
+    "lead": "Everything for the show, in one place.",
+    "body": "Your numbers, meeting notes and sponsor tracking — one click away."
+  },
+  "video": null,
+  "links": [
+    {
+      "label": "Show analytics",
+      "sub": "Downloads, views & growth",
+      "icon": "chart-bar",
+      "open": "portal",
+      "url": "https://thepodcastupload.myassembly.com/apps/d5a91271-b04a-447b-8302-ac6cb2d9d70d"
+    },
+    {
+      "label": "Meeting notes",
+      "sub": "Strategy chat recaps",
+      "icon": "notes",
+      "open": "portal",
+      "url": ""
+    },
+    {
+      "label": "Sponsorship tracking",
+      "sub": "Sponsors, scripts & dates",
+      "icon": "file-dollar",
+      "open": "portal",
+      "url": ""
+    },
+    {
+      "label": "Messages",
+      "sub": "Talk to the TPU team",
+      "icon": "message-circle",
+      "open": "portal",
+      "url": ""
+    }
+  ],
+  "upcoming": [
+    {
+      "date": "Dec 4",
+      "label": "Sponsor scripts due for Jan 1 episodes"
+    },
+    {
+      "date": "Dec 15",
+      "label": "Monthly strategy chat"
+    }
+  ],
+  "team": [
+    {
+      "name": "Caleb",
+      "role": "Sponsors & scripts"
+    },
+    {
+      "name": "Kaylee",
+      "role": "Show social content"
+    },
+    {
+      "name": "Olivia",
+      "role": "Newsletter & Kirk's socials"
+    }
+  ]
+}
