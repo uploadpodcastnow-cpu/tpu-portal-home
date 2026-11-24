@@ -174,7 +174,7 @@ h2{font-size:18px;line-height:1.15;margin:0 0 4px;font-weight:800}
   }
 
   function tileFor(l) {
-    const ext = l.open === 'external';
+    const ext = l.open === 'external' || l.newTab === true;
     const url = safeUrl(l.url);
     const a = el('a', {
       class: 'tile', href: url || '#', target: ext ? '_blank' : '_parent', rel: ext ? 'noopener' : null,
