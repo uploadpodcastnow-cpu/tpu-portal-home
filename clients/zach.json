@@ -49,30 +49,38 @@
       "sub": "Record episodes",
       "icon": "microphone",
       "open": "external",
-      "url": "https://riverside.fm/dashboard"
+      "url": "https://riverside.fm/dashboard",
+      "accent": "#8B7FB8"
     },
     {
       "label": "Frame.io",
       "sub": "Review & give feedback",
       "icon": "message-check",
       "open": "external",
-      "url": "https://app.frame.io"
+      "url": "https://app.frame.io",
+      "accent": "#7C7FD1"
     },
     {
       "label": "Podbean",
       "sub": "Audio publishing",
       "icon": "headphones",
       "open": "external",
-      "url": "https://www.podbean.com/login"
+      "url": "https://www.podbean.com/login",
+      "accent": "#5E9C8F"
     },
     {
       "label": "YouTube Studio",
       "sub": "Video publishing",
       "icon": "player-play",
       "open": "external",
-      "url": "https://studio.youtube.com"
+      "url": "https://studio.youtube.com",
+      "accent": "#C1675E"
     }
   ],
   "upcoming": [],
-  "team": []
+  "team": [],
+  "panel": {
+    "title": "Everything inside your portal",
+    "text": "Jump straight to your Pulse, show numbers, meeting notes and messages, all without leaving the portal."
+  }
 }
