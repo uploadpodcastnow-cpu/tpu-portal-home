@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Podcast Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: warm, calm concierge for podcast clients
+   IDEA: the client's front desk — welcome card, walkthrough, wall of doors
+   PICTURE: cover art + compact walkthrough video
+   COLOUR/TYPE: TPU cream #EEE3D5 + tan #CBB593 on white; Barlow
+   LAYOUT: one screen: welcome band / video + guide | quick links + dates */
+:root{color-scheme:light;--bg:#fff;--cream:#EEE3D5;--line:#E2D3BE;--tan:#CBB593;--tan-ink:#a98e66;--ink:#151515;--muted:#4d453c}
+*{box-sizing:border-box;min-width:0}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--ink);font:14px/1.45 Barlow,system-ui,sans-serif;overflow-x:clip}
+.page{max-width:1180px;margin:0 auto;padding:14px clamp(12px,2.2vw,28px);display:flex;flex-direction:column;gap:14px;height:100vh;overflow:hidden}
+.hero{background:var(--cream);border:2px solid var(--line);border-radius:16px;padding:12px 20px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;flex:none}
+.hero h1{font-size:clamp(19px,3.6vh,26px);line-height:1.1;font-weight:800;margin:0 0 3px;text-wrap:balance}
+.hero .lead{font-weight:700;font-size:14px;margin:0}
+.hero .body{margin:0;color:var(--muted);font-size:13.5px;line-height:1.4;max-width:78ch}
+.cover{height:clamp(60px,12vh,86px);aspect-ratio:1;border-radius:4px;border:4px solid #d9c6a4;background:var(--tan);object-fit:cover;box-shadow:0 3px 10px rgba(80,60,30,.18)}
+.cover.blank{display:grid;place-items:center;text-align:center;color:#fff;font-weight:800;font-size:11px;line-height:1.1;padding:6px}
+.main{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.35fr);gap:18px}
+.col{display:flex;flex-direction:column;gap:12px;min-height:0;overflow:hidden}
+.left{justify-content:flex-start}
+.card{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 14px;flex:none}
+.eyebrow{color:var(--tan-ink);font-weight:600;font-size:13px;margin:0 0 4px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.eyebrow small{color:var(--muted);font-weight:500;font-size:12px;display:inline-flex;align-items:center;gap:5px}
+h2{font-size:18px;line-height:1.15;margin:0 0 4px;font-weight:800}
+.vid{position:relative;width:100%;max-height:34vh;aspect-ratio:16/9;border:0;padding:0;background:#000;cursor:pointer;display:block;overflow:hidden;border-radius:10px;flex:none}
+.vid img,.vid iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border:0}
+.vid .play{position:absolute;left:50%;top:50%;width:46px;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:var(--tan);display:grid;place-items:center;transition:transform .2s}
+.vid:hover .play,.vid:focus-visible .play{transform:translate(-50%,-50%) scale(1.08)}
+.vid .play::after{content:"";border-left:15px solid #fff;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
+.vid:focus-visible{outline:3px solid var(--tan-ink);outline-offset:3px}
+.vtext p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.45}
+.list{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.list li{display:grid;grid-template-columns:54px minmax(0,1fr);gap:10px;align-items:center;font-size:13.5px;line-height:1.3}
+.date{background:var(--cream);border-radius:6px;text-align:center;font-weight:700;font-size:12px;padding:2px 0;white-space:nowrap}
+.who{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;align-items:center;line-height:1.25}
+.av{width:30px;height:30px;border-radius:50%;background:var(--tan);color:#fff;font-weight:700;font-size:13px;display:grid;place-items:center}
+.who b{display:block;font-size:14px}.who span{color:var(--muted);font-size:12.5px}
+.team{display:grid;gap:8px}
+.grid{display:grid;gap:10px;grid-template-columns:repeat(var(--cols,4),minmax(0,1fr));grid-auto-rows:clamp(92px,17vh,124px)}
+.tile{position:relative;background:var(--cream);border:2px solid var(--line);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:3px;padding:8px;color:var(--ink);text-decoration:none;overflow:hidden;transition:transform .15s,border-color .15s,box-shadow .15s}
+.tile:hover,.tile:focus-visible{transform:translateY(-2px);border-color:var(--tan);box-shadow:0 5px 14px rgba(120,90,40,.14);outline:none}
+.circ{width:clamp(32px,6vh,44px);aspect-ratio:1;border-radius:50%;background:var(--tan);display:grid;place-items:center;flex:none;margin-bottom:2px}
+.ic{width:54%;aspect-ratio:1;background:#fff;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
+.tile b{font-weight:800;font-size:12.5px;line-height:1.1;text-transform:uppercase;letter-spacing:.01em}
+.tile .sub{font-size:11.5px;color:var(--muted);line-height:1.2}
+.tile .ext{position:absolute;top:7px;right:7px;width:13px;height:13px;background:var(--tan-ink)}
+.extic{width:12px;height:12px;display:inline-block;background:var(--tan-ink);-webkit-mask:url(assets/icons/external-link.svg) center/contain no-repeat;mask:url(assets/icons/external-link.svg) center/contain no-repeat}
+.err{margin:40px auto;max-width:520px;text-align:center;color:var(--muted)}
+.preview{position:fixed;right:14px;bottom:14px;background:var(--ink);color:#fff;border-radius:999px;padding:6px 8px 6px 14px;font-size:13px;display:flex;gap:6px;align-items:center;box-shadow:0 6px 20px rgba(0,0,0,.25);z-index:5}
+.preview a{color:#fff;text-decoration:none;padding:5px 11px;border-radius:999px}
+.preview a[aria-current]{background:var(--tan);color:var(--ink);font-weight:700}
+@media (max-height:600px){.hero .body,.tile .sub{display:none}}
+@media (max-width:760px){.page{height:auto;overflow:visible}.main{grid-template-columns:minmax(0,1fr)}.col{overflow:visible}.grid{--cols:2!important}.vid{max-height:none}}
+@media (prefers-reduced-motion:reduce){.tile,.vid .play{transition:none}}
+</style>
+</head>
+<body>
+<main class="page" id="app" aria-live="polite"></main>
+<script>
+{
+  const params = new URLSearchParams(location.search);
+  const fixed = params.get('client');
+  const clean = s => String(s || '').toLowerCase().replace(/[^a-z0-9-]/g, '');
+  const icon = n => `url(assets/icons/${clean(n) || 'arrow-right'}.svg)`;
+  const app = document.getElementById('app');
+  const PREVIEW = ['zach', 'kirk'];
+
+  function el(tag, attrs = {}, ...kids) {
+    const e = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs)) {
+      if (v == null || v === false) continue;
+      if (k === 'class') e.className = v;
+      else if (k === 'text') e.textContent = v;
+      else if (k === 'style') e.style.cssText = v;
+      else e.setAttribute(k, v);
+    }
+    for (const k of kids) if (k) e.append(k);
+    return e;
+  }
+  const safeUrl = u => /^(https?:)?\/\//i.test(u || '') || /^\//.test(u || '') ? u : '';
+
+  function hero(c) {
+    const w = c.welcome || {};
+    const cover = c.coverArt
+      ? el('img', { class: 'cover', src: c.coverArt, alt: (c.showName || '') + ' cover art' })
+      : el('div', { class: 'cover blank', text: c.showName || c.firstName || '' });
+    return el('section', { class: 'hero' },
+      el('div', {},
+        el('h1', { text: w.title || `Welcome to your portal, ${c.firstName || ''}!` }),
+        w.lead && el('p', { class: 'lead', text: w.lead }),
+        w.body && el('p', { class: 'body', text: w.body })),
+      cover);
+  }
+
+  function upcomingList(items) {
+    return el('ul', { class: 'list' }, ...items.map(i =>
+      el('li', {}, el('span', { class: 'date', text: i.date }), el('span', { text: i.label }))));
+  }
+
+  function videoCard(v) {
+    const btn = el('button', { class: 'vid', type: 'button', 'aria-label': 'Play: ' + (v.title || 'portal walkthrough') },
+      v.poster && el('img', { src: v.poster, alt: '' }), el('span', { class: 'play' }));
+    btn.addEventListener('click', () => {
+      const src = safeUrl(v.embedUrl);
+      if (!src) { btn.title = 'Video link not added yet'; return; }
+      btn.replaceChildren(el('iframe', { src, allow: 'autoplay; fullscreen; picture-in-picture', allowfullscreen: '', title: v.title || 'Video' }));
+      btn.style.cursor = 'default';
+    });
+    return el('section', { class: 'card vtext' },
+      el('p', { class: 'eyebrow', text: '— Watch this video —' }),
+      btn,
+      el('h2', { text: v.title || 'How to use your portal', style: 'margin-top:10px' }),
+      v.text && el('p', { text: v.text }));
+  }
+
+  function teamCard(people) {
+    return el('section', { class: 'card' },
+      el('p', { class: 'eyebrow', text: 'Your TPU team' }),
+      el('div', { class: 'team' }, ...people.map(p => el('div', { class: 'who' },
+        el('span', { class: 'av', text: (p.name || '?')[0] }),
+        el('div', {}, el('b', { text: p.name }), el('span', { text: p.role }))))));
+  }
+
+  function links(list) {
+    const n = list.length;
+    const cols = n <= 4 ? 2 : n <= 6 ? 3 : 4;
+    const hasExt = list.some(l => l.open === 'external');
+    return el('section', { class: 'card', style: 'border:0;padding:0' },
+      el('p', { class: 'eyebrow' }, document.createTextNode('Quick links'),
+        hasExt && el('small', {}, el('span', { class: 'extic', 'aria-hidden': 'true' }), document.createTextNode('opens in a new tab'))),
+      el('nav', { class: 'grid', style: `--cols:${cols}`, 'aria-label': 'Quick links' }, ...list.map(l => {
+        const ext = l.open === 'external';
+        const url = safeUrl(l.url);
+        const a = el('a', {
+          class: 'tile', href: url || '#', target: ext ? '_blank' : '_parent', rel: ext ? 'noopener' : null,
+          title: url ? null : 'Link not added yet',
+          'aria-label': l.label + (ext ? ' (opens in a new tab)' : '')
+        },
+          el('span', { class: 'circ' }, el('span', { class: 'ic', style: `--m:${icon(l.icon)}` })),
+          el('b', { text: l.label }),
+          l.sub && el('span', { class: 'sub', text: l.sub }),
+          ext && el('span', { class: 'ext ic', style: '--m:url(assets/icons/external-link.svg)', 'aria-hidden': 'true' }));
+        if (!url) a.addEventListener('click', e => e.preventDefault());
+        return a;
+      })));
+  }
+
+  function render(c) {
+    document.title = `${c.firstName || 'Your'} — Podcast Portal`;
+    const left = [];
+    if (c.video) left.push(videoCard(c.video));
+    if (c.team && c.team.length) left.push(teamCard(c.team));
+    const right = [links(c.links || [])];
+    if (c.upcoming && c.upcoming.length) right.push(el('section', { class: 'card' },
+      el('p', { class: 'eyebrow', text: 'Coming up' }), upcomingList(c.upcoming)));
+    const main = el('div', { class: 'main', style: left.length ? null : 'grid-template-columns:minmax(0,1fr)' });
+    if (left.length) main.append(el('div', { class: 'col left' }, ...left));
+    main.append(el('div', { class: 'col' }, ...right));
+    app.replaceChildren(hero(c), main);
+  }
+
+  function previewBar(current) {
+    if (fixed) return;
+    let bar = document.querySelector('.preview');
+    if (!bar) { bar = el('nav', { class: 'preview', 'aria-label': 'Preview client' }); document.body.append(bar); }
+    bar.replaceChildren(document.createTextNode('Preview:'), ...PREVIEW.map(id =>
+      el('a', { href: '#' + id, 'aria-current': id === current ? 'page' : null, text: id[0].toUpperCase() + id.slice(1) })));
+  }
+
+  async function load() {
+    const id = clean(fixed || location.hash.slice(1)) || PREVIEW[0];
+    previewBar(id);
+    try {
+      const r = await fetch(`clients/${id}.json`, { cache: 'no-cache' });
+      if (!r.ok) throw new Error(r.status);
+      render(await r.json());
+    } catch (e) {
+      app.replaceChildren(el('p', { class: 'err', text: 'We couldn’t load this portal page. Please message the TPU team and we’ll fix it right away.' }));
+    }
+  }
+  addEventListener('hashchange', load);
+  load();
+}
+</script>
+</body>
+</html>
