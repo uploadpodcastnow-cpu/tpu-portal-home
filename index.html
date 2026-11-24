@@ -77,12 +77,12 @@ h2{font-size:18px;line-height:1.15;margin:0 0 4px;font-weight:800}
 .stage .ext{grid-column:1/5;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;grid-auto-rows:minmax(86px,auto)}
 .stage .ext .tile{min-height:86px;padding:10px 8px}
 @media (max-width:760px){.stage{grid-template-columns:minmax(0,1fr)}.stage .full,.stage .vcol,.stage .rcol,.stage .ext{grid-column:1/-1}.stage .ext{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.stage .rcol.panel{background:rgba(203,181,147,.16);border:1.5px solid rgba(203,181,147,.45);border-radius:18px;padding:18px var(--pg) var(--pg);justify-content:flex-start;gap:18px;align-self:end;--pg:clamp(16px,4vh,32px)}
+.stage .rcol.panel{background:rgba(203,181,147,.16);border:1.5px solid rgba(203,181,147,.45);border-radius:18px;padding:18px 18px var(--pg);justify-content:flex-start;gap:18px;align-self:end;--pg:clamp(16px,4vh,32px)}
 .page.std .stage .rcol.panel > div:first-child{padding-right:calc(var(--art) - 24px)}
 .stage .rcol.panel .lab{padding-top:0}
 .stage .ptitle{margin:2px 0 2px;font-size:18px;font-weight:800;line-height:1.15}
 .stage .psub{margin:0;font-size:13.5px;line-height:1.4;color:var(--muted)}
-.stage .rcol.panel .inner{gap:var(--pg)}
+.stage .rcol.panel .inner{gap:var(--pg);margin-inline:calc(var(--pg) - 18px)}
 .stage .rcol.panel .tile{background:#fff;border-color:rgba(203,181,147,.55)}
 .tile.acc .circ{background:var(--acc)}
 .tile.acc{border-color:color-mix(in srgb,var(--acc) 35%,var(--line));background:color-mix(in srgb,var(--acc) 7%,#fff)}
@@ -91,7 +91,7 @@ h2{font-size:18px;line-height:1.15;margin:0 0 4px;font-weight:800}
 .page.std{--art:clamp(120px,23vh,190px)}
 .page.std .hero{position:relative;padding-right:calc(var(--art) + 52px)}
 .page.std .cover{position:absolute;right:24px;top:24px;height:var(--art);width:var(--art);z-index:3;border-width:5px;box-shadow:0 8px 22px rgba(80,60,30,.22)}
-.stage .rcol.panel.many .inner{gap:20px}.stage .rcol.panel.many{gap:14px;padding:14px 20px 20px}
+.stage .rcol.panel.many .inner{gap:20px}.stage .rcol.panel.many{gap:14px;padding:14px 18px 20px}.stage .rcol.panel.many .inner{margin-inline:2px}
 @media (max-height:820px){.stage .rcol.many .psub{display:none}}
 @media (max-height:660px){.stage .rcol.many .ptitle{display:none}}
 @media (max-height:700px){.stage .rcol.panel .psub{display:none}}
