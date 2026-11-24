@@ -190,14 +190,12 @@ h2{font-size:18px;line-height:1.15;margin:0 0 4px;font-weight:800}
     const list = c.links || [];
     const inner = list.filter(l => l.open !== 'external').slice(0, 4);
     const outer = list.filter(l => l.open === 'external').slice(0, 4);
-    const btn = el('button', { class: 'vbox', type: 'button', 'aria-label': 'Play: ' + (v.title || 'portal walkthrough') },
-      v.poster && el('img', { src: v.poster, alt: '' }), el('span', { class: 'play' }));
-    btn.addEventListener('click', () => {
-      const src = safeUrl(v.embedUrl);
-      if (!src) { btn.title = 'Video link not added yet'; return; }
-      btn.replaceChildren(el('iframe', { src, allow: 'autoplay; fullscreen; picture-in-picture', allowfullscreen: '', title: v.title || 'Video' }));
-      btn.style.cursor = 'default';
-    });
+    const src = safeUrl(v.embedUrl);
+    const btn = src
+      ? el('div', { class: 'vbox', style: 'cursor:default' },
+          el('iframe', { src, allow: 'autoplay; fullscreen; picture-in-picture', allowfullscreen: '', title: v.title || 'Video' }))
+      : el('div', { class: 'vbox', title: 'Video link not added yet' },
+          v.poster && el('img', { src: v.poster, alt: '' }), el('span', { class: 'play' }));
     const innerTiles = inner.map((l, i) => {
       const t = tileFor(l);
       if (inner.length === 3 && i === 2) t.classList.add('wide');
