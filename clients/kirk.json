@@ -21,21 +21,21 @@
       "sub": "Strategy chat recaps",
       "icon": "notes",
       "open": "portal",
-      "url": ""
+      "url": "https://thepodcastupload.myassembly.com/apps/3fd9cef9-9f79-448c-9b36-04c481812a60"
     },
     {
       "label": "Sponsorship tracking",
       "sub": "Sponsors, scripts & dates",
       "icon": "file-dollar",
       "open": "portal",
-      "url": ""
+      "url": "https://thepodcastupload.myassembly.com/apps/82c9badc-b27d-4cb0-8c7f-a708d0f75661"
     },
     {
       "label": "Messages",
       "sub": "Talk to the TPU team",
       "icon": "message-circle",
       "open": "portal",
-      "url": ""
+      "url": "https://thepodcastupload.myassembly.com/messaging"
     }
   ],
   "upcoming": [
