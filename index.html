@@ -52,8 +52,8 @@ h2{font-size:18px;line-height:1.15;margin:0 0 4px;font-weight:800}
 .ic{width:54%;aspect-ratio:1;background:#fff;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
 .tile b{font-weight:800;font-size:12.5px;line-height:1.1;text-transform:uppercase;letter-spacing:.01em}
 .tile .sub{font-size:11.5px;color:var(--muted);line-height:1.2}
-.tile .ext{position:absolute;top:7px;right:7px;width:13px;height:13px;background:var(--tan-ink)}
-.extic{width:12px;height:12px;display:inline-block;background:var(--tan-ink);-webkit-mask:url(assets/icons/external-link.svg) center/contain no-repeat;mask:url(assets/icons/external-link.svg) center/contain no-repeat}
+.tile .xl{position:absolute;top:6px;right:9px;font:15px/1 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans',sans-serif;color:var(--tan-ink)}
+.extic{font:13px/1 'Segoe UI Symbol','Apple Symbols','Noto Sans Symbols 2','DejaVu Sans',sans-serif;color:var(--tan-ink)}
 .err{margin:40px auto;max-width:520px;text-align:center;color:var(--muted)}
 .preview{position:fixed;right:14px;bottom:14px;background:var(--ink);color:#fff;border-radius:999px;padding:6px 8px 6px 14px;font-size:13px;display:flex;gap:6px;align-items:center;box-shadow:0 6px 20px rgba(0,0,0,.25);z-index:5}
 .preview a{color:#fff;text-decoration:none;padding:5px 11px;border-radius:999px}
@@ -87,7 +87,7 @@ h2{font-size:18px;line-height:1.15;margin:0 0 4px;font-weight:800}
 .tile.acc .circ{background:var(--acc)}
 .tile.acc{border-color:color-mix(in srgb,var(--acc) 35%,var(--line));background:color-mix(in srgb,var(--acc) 7%,#fff)}
 .tile.acc::before{content:"";position:absolute;left:16px;right:16px;top:-1px;height:3px;border-radius:0 0 3px 3px;background:var(--acc);opacity:.85}
-.tile.acc .ext{background:var(--acc)}
+.tile.acc .xl{color:var(--acc)}
 .page.std{--art:clamp(120px,23vh,190px)}
 .page.std .hero{position:relative;padding-right:calc(var(--art) + 52px)}
 .page.std .cover{position:absolute;right:24px;top:24px;height:var(--art);width:var(--art);z-index:3;border-width:5px;box-shadow:0 8px 22px rgba(80,60,30,.22)}
@@ -185,7 +185,7 @@ h2{font-size:18px;line-height:1.15;margin:0 0 4px;font-weight:800}
     const hasExt = list.some(l => l.open === 'external');
     return el('section', { class: 'card', style: 'border:0;padding:0' },
       el('p', { class: 'eyebrow' }, document.createTextNode('Quick links'),
-        hasExt && el('small', {}, el('span', { class: 'extic', 'aria-hidden': 'true' }), document.createTextNode('opens in a new tab'))),
+        hasExt && el('small', {}, el('span', { class: 'extic', text: '\u279A', 'aria-hidden': 'true' }), document.createTextNode('opens in a new tab'))),
       el('nav', { class: 'grid', style: `--cols:${cols}`, 'aria-label': 'Quick links' }, ...list.map(l => {
         const ext = l.open === 'external';
         const url = safeUrl(l.url);
@@ -197,7 +197,7 @@ h2{font-size:18px;line-height:1.15;margin:0 0 4px;font-weight:800}
           el('span', { class: 'circ' }, el('span', { class: 'ic', style: `--m:${icon(l.icon)}` })),
           el('b', { text: l.label }),
           l.sub && el('span', { class: 'sub', text: l.sub }),
-          ext && el('span', { class: 'ext ic', style: '--m:url(assets/icons/external-link.svg)', 'aria-hidden': 'true' }));
+          ext && el('span', { class: 'xl', text: '\u279A', 'aria-hidden': 'true' }));
         if (!url) a.addEventListener('click', e => e.preventDefault());
         return a;
       })));
@@ -214,7 +214,7 @@ h2{font-size:18px;line-height:1.15;margin:0 0 4px;font-weight:800}
       el('span', { class: 'circ' }, el('span', { class: 'ic', style: `--m:${icon(l.icon)}` })),
       el('b', { text: l.label }),
       l.sub && el('span', { class: 'sub', text: l.sub }),
-      ext && el('span', { class: 'ext ic', style: '--m:url(assets/icons/external-link.svg)', 'aria-hidden': 'true' }));
+      ext && el('span', { class: 'xl', text: '\u279A', 'aria-hidden': 'true' }));
     if (!url) a.addEventListener('click', e => e.preventDefault());
     if (/^#[0-9a-f]{3,8}$/i.test(l.accent || '')) { a.classList.add('acc'); a.style.setProperty('--acc', l.accent); }
     return a;
@@ -269,7 +269,7 @@ h2{font-size:18px;line-height:1.15;margin:0 0 4px;font-weight:800}
     ];
     if (outer.length) kids.push(
       el('p', { class: 'eyebrow lab full' }, document.createTextNode(c.toolsTitle || 'Your Tools'),
-        el('small', {}, el('span', { class: 'extic', 'aria-hidden': 'true' }), document.createTextNode('opens in a new tab'))),
+        el('small', {}, el('span', { class: 'extic', text: '\u279A', 'aria-hidden': 'true' }), document.createTextNode('opens in a new tab'))),
       el('nav', { class: 'ext', 'aria-label': 'External tools' }, ...outer.map(tileFor)));
     return el('section', { class: 'stage' }, ...kids.filter(Boolean));
   }
